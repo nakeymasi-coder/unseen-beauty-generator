@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be Seen · Unseen Beauty Prompt Generator</title>
+<meta name="description" content="Create stunning, dignified AI portrait prompts celebrating the women the world overlooks — survivors, warriors and queens.">
+<style>
+
+  :root{
+    --sapphire:#5B9BD5; --sapphire-deep:#2B6CB0; --sapphire-pale:#BFD9F2;
+    --chrome:#C9D4E0; --chrome-deep:#8FA3B8; --pearl:#FDFBF6; --ink:#1F2A37;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif; color:var(--ink);
+    background:linear-gradient(160deg,#FDFBF6 0%,#EAF2FB 40%,#DCE9F7 70%,#F4EFE6 100%);
+    min-height:100vh;
+  }
+  .wrap{max-width:1060px; margin:0 auto; padding:28px 18px 80px;}
+header.hero h1{font-size:clamp(2rem,5vw,3.1rem); letter-spacing:1px; text-shadow:0 2px 14px rgba(20,40,70,.35); position:relative; z-index:1;}
+  header.hero h1 .seen{background:linear-gradient(90deg,#fff,#FFE9A8); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  header.hero p{margin-top:12px; font-size:clamp(1rem,2.4vw,1.2rem); max-width:720px; margin-left:auto; margin-right:auto; position:relative; z-index:1; text-shadow:0 1px 8px rgba(20,40,70,.3);}
+  .dignity{
+    margin:18px auto 0; display:inline-block; background:rgba(255,255,255,.92); color:#2B6CB0;
+    padding:10px 20px; border-radius:999px; font-weight:600; font-size:.95rem; position:relative; z-index:1;
+    box-shadow:0 4px 14px rgba(20,40,70,.18);
+  }
+  .kicker{
+    display:inline-block; background:rgba(255,255,255,.16); border:1.5px solid rgba(255,255,255,.45);
+    color:#fff; font-weight:700; font-size:.88rem; letter-spacing:1px; text-transform:uppercase;
+    padding:8px 20px; border-radius:999px; margin-bottom:18px; position:relative; z-index:1;
+  }
+  header.hero .tagline{
+    font-size:clamp(.95rem,2.4vw,1.15rem); font-weight:800; letter-spacing:3px; text-transform:uppercase;
+    margin-top:8px; position:relative; z-index:1; text-shadow:0 1px 8px rgba(20,40,70,.3);
+  }
+  .hero-cta{margin-top:24px; position:relative; z-index:1;}
+  .hero-cta .btn{font-size:1.1rem; padding:16px 36px; box-shadow:0 12px 30px rgba(20,40,70,.35);}
+  .stats{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:24px; position:relative; z-index:1;}
+  .stats span{
+    background:rgba(255,255,255,.94); color:#2B6CB0; font-weight:600; font-size:.9rem;
+    padding:9px 18px; border-radius:999px; box-shadow:0 4px 12px rgba(20,40,70,.16);
+  }
+  .stats b{font-weight:800;}
+  .how{margin-top:26px; text-align:center;}
+  .how h2{font-size:clamp(1.4rem,3.4vw,1.9rem); color:#1F2A37;}
+  .how-sub{color:#5A6B7E; margin:8px 0 20px; font-size:1rem;}
+  .how-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; text-align:left;}
+  .how-card{
+    background:rgba(255,255,255,.9); border:1px solid #E3ECF5; border-radius:18px; padding:22px 20px;
+    box-shadow:0 10px 28px rgba(43,108,176,.10);
+  }
+  .how-num{
+    width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#2B6CB0,#5B9BD5,#C9D4E0);
+    color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+    margin-bottom:12px; box-shadow:0 4px 12px rgba(43,108,176,.35);
+  }
+  .how-card h3{font-size:1.08rem; color:#1F2A37; margin-bottom:8px;}
+  .how-card p{font-size:.93rem; color:#5A6B7E; line-height:1.55;}
+  .final-cta{
+    margin-top:26px; text-align:center; padding:46px 26px; border-radius:22px; color:#fff;
+    background:linear-gradient(135deg,#2B6CB0 0%,#5B9BD5 40%,#9DC3E6 75%,#C9D4E0 100%);
+    box-shadow:0 18px 45px rgba(43,108,176,.28); position:relative; overflow:hidden;
+  }
+  .final-cta::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.3),transparent 45%);
+    pointer-events:none;
+  }
+  .final-cta h2{font-size:clamp(1.5rem,4vw,2.1rem); position:relative; z-index:1; text-shadow:0 2px 12px rgba(20,40,70,.3);}
+  .final-cta p{margin:12px 0 24px; font-size:1.02rem; position:relative; z-index:1; text-shadow:0 1px 8px rgba(20,40,70,.3);}
+  .final-cta .btn{position:relative; z-index:1; font-size:1.08rem; padding:16px 36px; box-shadow:0 12px 30px rgba(20,40,70,.35);}
+  section.step{
+    background:rgba(255,255,255,.86); border:1px solid #E3ECF5; border-radius:20px;
+    padding:26px 22px; margin-top:26px; box-shadow:0 10px 30px rgba(43,108,176,.10);
+    backdrop-filter:blur(4px);
+  }
+  .step-head{display:flex; align-items:center; gap:12px; margin-bottom:6px;}
+  .step-num{
+    width:40px; height:40px; border-radius:50%; flex:0 0 40px;
+    background:linear-gradient(135deg,#2B6CB0,#5B9BD5,#C9D4E0);
+    color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+    box-shadow:0 4px 12px rgba(43,108,176,.35);
+  }
+  .step-head h2{font-size:1.35rem; color:#1F2A37;}
+  .step-sub{color:#5A6B7E; margin:2px 0 16px 52px; font-size:.98rem;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px;}
+  .grid.tight{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+  .card{
+    border:2px solid #E3ECF5; border-radius:14px; padding:14px 12px; cursor:pointer;
+    background:#fff; transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    text-align:center; user-select:none;
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(43,108,176,.16);}
+  .card.selected{
+    border-color:var(--sapphire-deep);
+    background:linear-gradient(160deg,#FFFFFF,#EAF2FB);
+    box-shadow:0 10px 24px rgba(43,108,176,.22);
+  }
+  .card .emoji{font-size:2rem; display:block; margin-bottom:8px;}
+  .card .name{font-weight:700; font-size:.98rem; color:#1F2A37;}
+  .card .desc{font-size:.82rem; color:#6B7C90; margin-top:6px; line-height:1.4;}
+  .chip{
+    border:2px solid #E3ECF5; background:#fff; border-radius:999px; padding:10px 16px;
+    cursor:pointer; font-size:.95rem; font-weight:600; color:#33475C; transition:all .15s ease; user-select:none;
+  }
+  .chip:hover{transform:translateY(-2px); box-shadow:0 8px 18px rgba(43,108,176,.14);}
+  .chip.selected{
+    background:linear-gradient(135deg,#2B6CB0,#5B9BD5); color:#fff; border-color:#2B6CB0;
+    box-shadow:0 8px 18px rgba(43,108,176,.30);
+  }
+  .chips{display:flex; flex-wrap:wrap; gap:10px;}
+  label.lbl{display:block; font-weight:700; margin:20px 0 10px; color:#2B4A68;}
+  label.lbl:first-of-type{margin-top:4px;}
+  input[type=text], select{
+    width:100%; padding:13px 15px; border-radius:12px; border:2px solid #D8E4F0;
+    font-size:1rem; background:#fff; color:#1F2A37; outline:none;
+  }
+  input[type=text]:focus, select:focus{border-color:var(--sapphire-deep); box-shadow:0 0 0 3px rgba(91,155,213,.18);}
+  textarea{
+    width:100%; padding:13px 15px; border-radius:12px; border:2px solid #D8E4F0;
+    font-size:1rem; background:#fff; color:#1F2A37; outline:none; font-family:inherit; resize:vertical;
+  }
+  textarea:focus{border-color:var(--sapphire-deep); box-shadow:0 0 0 3px rgba(91,155,213,.18);}
+  .hint{font-size:.88rem; color:#5A6B7E; margin-top:8px;}
+  .goodbad{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;}
+  .goodbad div{border-radius:12px; padding:12px 14px; font-size:.88rem; line-height:1.5;}
+  .good{background:#EAF7EE; border:1.5px solid #BFE3C9; color:#27633B;}
+  .bad{background:#FDECEC; border:1.5px solid #F3C2C2; color:#8C3535;}
+  .warn{margin-top:12px; background:#FFF6E5; border:1.5px solid #F0D48A; color:#8A5A00; border-radius:12px; padding:12px 14px; font-size:.92rem; line-height:1.5;}
+  .win{margin-top:12px; background:#EAF7EE; border:1.5px solid #BFE3C9; color:#27633B; border-radius:12px; padding:14px 16px; font-size:.95rem; line-height:1.55;}
+  .win .btn{margin-top:10px;}
+  .yours{margin-top:22px; background:linear-gradient(160deg,#FFFFFF,#EAF2FB); border:2px dashed #9DC3E6; border-radius:16px; padding:20px; text-align:center;}
+  .yours p{font-weight:700; color:#2B4A68; margin-bottom:14px; font-size:1.02rem;}
+  .formula{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin:14px 0 6px;}
+  .formula div{background:#F4F8FD; border:1.5px solid #D8E4F0; border-radius:12px; padding:12px 14px; font-size:.88rem; line-height:1.55; color:#33475C;}
+  .formula b{color:#2B6CB0;}
+  footer .ctarow{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:16px;}
+  .cta-pill{flex:1 1 220px; max-width:320px; text-decoration:none; font-weight:800; font-size:1.02rem; border-radius:999px; padding:15px 22px; text-align:center; color:#fff; background:linear-gradient(135deg,#2B6CB0,#5B9BD5 60%,#9DC3E6); box-shadow:0 10px 24px rgba(43,108,176,.35); transition:transform .15s ease;}
+  .cta-pill:hover{transform:translateY(-2px);}
+  footer .tagline{font-size:.95rem; margin-bottom:6px;}
+  footer .sigline{font-size:.82rem; color:#8FA3B8;}
+  @media(max-width:560px){ .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));} .goodbad{grid-template-columns:1fr;} }
+  .btnrow{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px;}
+  button.btn{
+    border:none; cursor:pointer; font-weight:800; font-size:1.05rem; border-radius:14px;
+    padding:15px 28px; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  button.btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:linear-gradient(135deg,#2B6CB0,#5B9BD5 60%,#9DC3E6); color:#fff; box-shadow:0 10px 24px rgba(43,108,176,.35);}
+  .btn-ghost{background:#fff; color:#2B6CB0; border:2px solid #BFD9F2;}
+  .btn-chrome{background:linear-gradient(135deg,#8FA3B8,#C9D4E0,#F2F5F8); color:#1F2A37; box-shadow:0 8px 20px rgba(140,160,180,.35);}
+  .countrow{display:flex; align-items:center; gap:14px; margin-top:20px; flex-wrap:wrap;}
+  .countrow input[type=range]{flex:1; min-width:180px; accent-color:#2B6CB0;}
+  .countval{font-weight:800; color:#2B6CB0; font-size:1.2rem; min-width:88px; text-align:center;
+    background:#EAF2FB; border-radius:10px; padding:6px 10px;}
+  #output{margin-top:26px; display:none;}
+  .prompt-card{
+    background:#fff; border:2px solid #D8E4F0; border-radius:16px; padding:18px; margin-bottom:14px;
+    box-shadow:0 8px 22px rgba(43,108,176,.10);
+  }
+  .prompt-card .phead{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .prompt-card .pnum{font-weight:800; color:#2B6CB0;}
+  .prompt-card p.ptxt{line-height:1.65; font-size:.98rem; color:#2E3D4F; white-space:pre-wrap;}
+  .mini-btn{
+    border:2px solid #BFD9F2; background:#fff; color:#2B6CB0; font-weight:700; border-radius:10px;
+    padding:8px 16px; cursor:pointer; font-size:.9rem; transition:all .15s ease;
+  }
+  .mini-btn:hover{background:#EAF2FB;}
+  .mini-btn.copied{background:#2B6CB0; color:#fff; border-color:#2B6CB0;}
+footer{text-align:center; color:#7A8CA0; margin-top:44px; font-size:.9rem;}
+  footer .sig{font-weight:700; color:#2B6CB0;}
+  @media(max-width:560px){ .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));} }
+
+
+  /* ---------- app shell: pages, topbar, drawer ---------- */
+  .page{display:none;}
+  .page.active{display:block; animation:fadeIn .25s ease;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;}}
+  .topbar{
+    position:sticky; top:0; z-index:60; display:flex; align-items:center; justify-content:space-between;
+    background:rgba(253,251,246,.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid #E3ECF5; padding:10px 16px;
+  }
+  .topbar .brand{font-weight:800; letter-spacing:2px; color:#2B6CB0; font-size:1.05rem;}
+  .icon-btn{
+    border:2px solid #D8E4F0; background:#fff; color:#2B6CB0; border-radius:12px;
+    font-size:1.25rem; font-weight:800; padding:6px 14px; cursor:pointer; line-height:1;
+  }
+  .icon-btn:hover{background:#EAF2FB;}
+  #savedCount{background:#2B6CB0; color:#fff; border-radius:999px; font-size:.75rem; padding:2px 8px; margin-left:4px;}
+  .drawer{
+    position:fixed; top:0; left:0; bottom:0; width:min(320px,84vw); z-index:70;
+    background:linear-gradient(170deg,#FDFBF6,#EAF2FB); box-shadow:8px 0 30px rgba(20,40,70,.18);
+    transform:translateX(-105%); transition:transform .28s ease; padding:20px 16px; overflow-y:auto;
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer h3{color:#2B6CB0; letter-spacing:2px; margin:6px 0 14px; font-size:1rem;}
+  .drawer a{
+    display:block; padding:13px 14px; border-radius:12px; color:#33475C; font-weight:700;
+    text-decoration:none; margin-bottom:6px; cursor:pointer; font-size:.98rem;
+  }
+  .drawer a:hover{background:#fff; box-shadow:0 6px 16px rgba(43,108,176,.12);}
+  .drawer a.on{background:linear-gradient(135deg,#2B6CB0,#5B9BD5); color:#fff;}
+  .drawer .dclose{float:right;}
+  .scrim{position:fixed; inset:0; background:rgba(20,40,70,.35); z-index:65; display:none;}
+  .scrim.open{display:block;}
+  #progress{display:none; background:#fff; border-bottom:1px solid #E3ECF5; padding:10px 18px 12px; position:sticky; top:57px; z-index:55;}
+  #progress .ptext{font-size:.82rem; font-weight:700; color:#2B6CB0; margin-bottom:6px; letter-spacing:1px;}
+  #progress .pbar{height:8px; background:#E3ECF5; border-radius:999px; overflow:hidden;}
+  #progress .pfill{height:100%; width:0; background:linear-gradient(90deg,#2B6CB0,#5B9BD5,#9DC3E6); border-radius:999px; transition:width .3s ease;}
+  .pagenav{display:flex; justify-content:space-between; gap:12px; margin-top:24px;}
+  .pagenav .btn{flex:1;}
+  /* ---------- hero with image ---------- */
+  header.hero{padding:0; text-align:center;}
+  .hero-imgwrap{position:relative; border-radius:26px; overflow:hidden; box-shadow:0 18px 45px rgba(43,108,176,.28);}
+  .hero-imgwrap img{width:100%; height:clamp(300px,52vw,460px); object-fit:cover; display:block;}
+  .hero-overlay{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
+    padding:30px 22px 26px; text-align:center; color:#fff;
+    background:linear-gradient(180deg, rgba(20,40,70,0) 30%, rgba(20,40,70,.28) 55%, rgba(28,70,120,.82) 100%);
+  }
+  .hero-overlay h1{font-size:clamp(2.4rem,7vw,3.6rem); letter-spacing:3px; text-shadow:0 3px 18px rgba(10,25,50,.6);}
+  .hero-overlay h1 .seen{background:linear-gradient(90deg,#fff,#FFE9A8); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero-overlay .tagline{font-weight:800; letter-spacing:3px; text-transform:uppercase; font-size:clamp(.85rem,2.4vw,1.05rem); margin-top:6px; text-shadow:0 2px 10px rgba(10,25,50,.6);}
+  .hero-overlay p.sub{margin:12px auto 0; max-width:640px; font-size:clamp(.95rem,2.4vw,1.08rem); text-shadow:0 2px 10px rgba(10,25,50,.65);}
+  .hero-overlay .hero-cta{margin-top:20px;}
+  .hero-overlay .dignity{margin:16px auto 0;}
+  /* ---------- add rows / customs ---------- */
+  .addrow{display:flex; gap:8px; margin-top:12px;}
+  .addrow input{flex:1;}
+  .addrow .mini-btn{white-space:nowrap;}
+  .addrow2{display:grid; grid-template-columns:1fr 1fr auto; gap:8px; margin-top:12px;}
+  .chip.custom, .card.custom{position:relative;}
+  .chip .cx, .card .cx{
+    position:absolute; top:-8px; right:-6px; width:22px; height:22px; border-radius:50%;
+    background:#fff; border:1.5px solid #E3A0A0; color:#B04040; font-size:.75rem; font-weight:800;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; line-height:1;
+  }
+  .multihint{font-size:.85rem; color:#7A8CA0; margin:-8px 0 14px 2px;}
+  /* ---------- saved ---------- */
+  .save-btn{border:2px solid #F3C2C2; background:#fff; color:#C04A4A; font-weight:700; border-radius:10px; padding:8px 14px; cursor:pointer; font-size:.9rem;}
+  .save-btn.saved{background:#C04A4A; color:#fff; border-color:#C04A4A;}
+  .save-btn:hover{transform:translateY(-1px);}
+  .empty-saved{text-align:center; color:#7A8CA0; padding:40px 20px; font-size:1rem; line-height:1.6;}
+  /* ---------- glow pills ---------- */
+  .cta-pill{transition:transform .15s ease, box-shadow .25s ease;}
+  .cta-pill:hover{
+    transform:translateY(-2px) scale(1.03);
+    box-shadow:0 0 26px rgba(91,155,213,.95), 0 0 64px rgba(91,155,213,.45), 0 10px 24px rgba(43,108,176,.35);
+  }
+  .toast{
+    position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(140px);
+    background:#1F2A37; color:#fff; font-weight:700; padding:13px 24px; border-radius:999px;
+    box-shadow:0 12px 30px rgba(10,20,35,.4); transition:transform .3s ease; z-index:80; font-size:.95rem;
+    max-width:88vw; text-align:center;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0);}
+
+
+  /* ---------- floating help ---------- */
+  #helpFab{
+    position:fixed; right:20px; bottom:20px; z-index:75; width:56px; height:56px; border-radius:50%;
+    border:none; cursor:pointer; font-size:1.6rem; font-weight:800; color:#fff;
+    background:linear-gradient(135deg,#2B6CB0,#5B9BD5);
+    box-shadow:0 10px 26px rgba(43,108,176,.5), 0 0 22px rgba(91,155,213,.55);
+    transition:transform .15s ease, box-shadow .25s ease;
+  }
+  #helpFab:hover{transform:scale(1.1); box-shadow:0 10px 26px rgba(43,108,176,.5), 0 0 38px rgba(91,155,213,.9);}
+  .help-scrim{position:fixed; inset:0; background:rgba(20,40,70,.45); z-index:76; display:none;}
+  .help-scrim.open{display:block;}
+  .help-modal{position:fixed; inset:0; z-index:77; display:none; align-items:center; justify-content:center; padding:20px;}
+  .help-modal.open{display:flex;}
+  .help-card{
+    background:#FDFBF6; border-radius:22px; max-width:520px; width:100%; max-height:86vh; overflow-y:auto;
+    padding:30px 26px; position:relative; box-shadow:0 24px 60px rgba(10,25,50,.35);
+    animation:fadeIn .25s ease;
+  }
+  .help-card h2{color:#1F2A37; font-size:1.4rem; margin-bottom:16px; padding-right:40px;}
+  .help-close{position:absolute; top:16px; right:16px;}
+  .help-steps div{background:#fff; border:1.5px solid #E3ECF5; border-radius:14px; padding:13px 15px; margin-bottom:10px; font-size:.94rem; line-height:1.55; color:#33475C;}
+  .help-steps b{color:#2B6CB0;}
+  .help-tip{font-size:.9rem; color:#5A6B7E; margin-top:6px; line-height:1.5;}
+
+
+  /* ---------- fabs, locks, none ---------- */
+  .fabstack{position:fixed; left:20px; bottom:20px; z-index:75; display:flex; flex-direction:column; gap:10px;}
+  .fabstack button{
+    width:56px; height:56px; border-radius:50%; border:none; cursor:pointer; font-size:1.5rem;
+    background:linear-gradient(135deg,#2B6CB0,#5B9BD5); color:#fff;
+    box-shadow:0 10px 26px rgba(43,108,176,.5), 0 0 22px rgba(91,155,213,.55);
+    transition:transform .15s ease, box-shadow .25s ease;
+  }
+  .fabstack button:hover{transform:scale(1.1); box-shadow:0 10px 26px rgba(43,108,176,.5), 0 0 38px rgba(91,155,213,.9);}
+  .lockbtn{border:none; background:rgba(43,108,176,.08); border-radius:10px; font-size:1rem; cursor:pointer; padding:3px 9px; margin-left:8px; vertical-align:middle;}
+  .lockbtn.on{background:#2B6CB0;}
+  .chip.none{border-style:dashed; color:#7A8CA0;}
+  .chip.none.selected{background:linear-gradient(135deg,#7A8CA0,#9DB2C6); border-color:#7A8CA0; border-style:dashed;}
+  .card.none{border-style:dashed;}
+  .card.none .emoji{filter:grayscale(1); opacity:.7;}
+
+</style>
+</head>
+<body>
+<!-- ============================================================
+  BE SEEN LICENSE GATE — insert this whole block immediately
+  after the opening <body> tag of unseen-beauty-generator/index.html.
+  Fully self-contained (own styles + own script). Hides the entire
+  app (topbar, drawer, progress, wrap, floating buttons) until unlock.
+  ============================================================ -->
+<style>
+  /* While the gate is active, hide the whole app behind it. */
+  body.gen-locked > *:not(#genGate):not(style):not(script){ display:none !important; }
+  #genGate{ position:fixed; inset:0; z-index:9999; display:flex;
+    align-items:center; justify-content:center; padding:20px;
+    background:linear-gradient(160deg,#FDFEFF 0%,#EAF2FB 45%,#F8FBFE 100%); }
+  #genGate[hidden]{ display:none !important; }
+  .genGate-card{ width:100%; max-width:440px; background:#fff; border-radius:24px;
+    padding:34px 30px 30px; text-align:center;
+    box-shadow:0 18px 50px rgba(43,108,176,.25); border:1px solid #D9E4F2; }
+  .genGate-badge{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:1.5px;
+    color:#2F6DAE; background:#EAF2FB; border-radius:99px; padding:6px 16px; margin-bottom:14px; }
+  .genGate-card h2{ font-family:'Nunito',system-ui,sans-serif; color:#1C2742;
+    font-size:24px; margin:0 0 8px; }
+  .genGate-card p.sub{ color:#5A6B8C; font-size:14.5px; margin:0 0 20px; line-height:1.55; }
+  #genKeyInput{ width:100%; padding:14px 16px; font-size:16px; border-radius:14px;
+    border:2px solid #D9E4F2; font-family:'Nunito',system-ui,sans-serif; color:#1C2742;
+    margin-bottom:12px; box-sizing:border-box; }
+  #genKeyInput:focus{ outline:none; border-color:#4A90D9; box-shadow:0 0 0 3px rgba(74,144,217,.18); }
+  #genUnlockBtn{ width:100%; padding:14px; font-size:16px; font-weight:800; color:#fff;
+    border:none; border-radius:14px; cursor:pointer; font-family:'Nunito',system-ui,sans-serif;
+    background:linear-gradient(120deg,#4A90D9 0%,#2F6DAE 100%);
+    box-shadow:0 8px 22px rgba(43,108,176,.35); }
+  #genUnlockBtn:disabled{ opacity:.6; cursor:wait; }
+  #genGateMsg{ min-height:22px; font-size:14px; color:#B3122E; margin:10px 0 0; font-weight:600; }
+  #genGateMsg.ok{ color:#1E7B3C; }
+  .genGate-hint{ margin-top:16px; font-size:13px; color:#5A6B8C; line-height:1.6; }
+  .genGate-hint strong{ color:#1C2742; }
+</style>
+<div id="genGate" role="dialog" aria-label="Unlock Be Seen">
+  <div class="genGate-card">
+    <span class="genGate-badge">BUYERS ONLY</span>
+    <h2>🔑 Unlock Be Seen</h2>
+    <p class="sub">This is the full Be Seen Unseen Beauty Prompt Generator — 50 queens, 50 power words, 50 typography styles, 50 art vibes. Enter the license key from your purchase email to open it up.</p>
+    <input id="genKeyInput" type="text" placeholder="Paste your license key here" autocomplete="off" spellcheck="false">
+    <button id="genUnlockBtn">Unlock Be Seen</button>
+    <p id="genGateMsg"></p>
+    <p class="genGate-hint"><strong>Where's my key?</strong><br>It's in the email Payhip sent you right after checkout — look for "license key".<br>Buying now? The key arrives within a couple of minutes of payment.</p>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var FLAG = "glamBeSeenLicensedV1";
+  var VERIFY_URL = "https://workshop-poratl.netlify.app/.netlify/functions/verify-beseen-license";
+  function readFlag(){ try { return window.localStorage.getItem(FLAG) === "1"; } catch(e){ return false; } }
+  function writeFlag(){ try { window.localStorage.setItem(FLAG, "1"); } catch(e){} }
+  function unlock(){
+    document.body.classList.remove("gen-locked");
+    var g = document.getElementById("genGate");
+    if (g) g.hidden = true;
+  }
+  function lock(){
+    document.body.classList.add("gen-locked");
+    var g = document.getElementById("genGate");
+    if (g) g.hidden = false;
+  }
+  // Initial state: locked unless this browser already unlocked.
+  if (readFlag()) { unlock(); } else { lock(); }
+  var btn = document.getElementById("genUnlockBtn");
+  var input = document.getElementById("genKeyInput");
+  var msg = document.getElementById("genGateMsg");
+  if (!btn || !input) return;
+  function say(t, ok){ if(msg){ msg.textContent = t; msg.className = ok ? "ok" : ""; } }
+  btn.addEventListener("click", async function(){
+    var key = input.value.trim();
+    if (!key) { say("Please paste your license key first."); return; }
+    btn.disabled = true; btn.textContent = "Checking...";
+    say("");
+    try {
+      var res = await fetch(VERIFY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ licenseKey: key })
+      });
+      var data = null;
+      try { data = await res.json(); } catch(e){}
+      if (!res.ok || !data || !data.success) {
+        say((data && data.message) || "That key didn't work. Double-check it and try again.");
+        return;
+      }
+      writeFlag();
+      unlock();
+      say("Unlocked — welcome in! ✨", true);
+    } catch(e) {
+      say("We couldn't reach the checker right now. Check your connection and try again.");
+    } finally {
+      btn.disabled = false; btn.textContent = "Unlock Be Seen";
+    }
+  });
+  input.addEventListener("keydown", function(e){ if (e.key === "Enter") btn.click(); });
+})();
+</script>
+<!-- ================= end BE SEEN LICENSE GATE ================= -->
+
+<div class="topbar">
+  <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <div class="brand">BE SEEN 👑</div>
+  <button class="icon-btn" id="topSaved" aria-label="Saved prompts">♥<span id="savedCount">0</span></button>
+</div>
+<div class="scrim" id="scrim"></div>
+<nav class="drawer" id="drawer">
+  <button class="icon-btn dclose" id="drawerClose" aria-label="Close">×</button>
+  <h3>BE SEEN MENU</h3>
+  <a data-page="pg-home">🏠 Home</a>
+  <a data-page="pg-queen">👑 1 · Choose your queen</a>
+  <a data-page="pg-details">✨ 2 · Beauty details</a>
+  <a data-page="pg-word">💬 3 · Power word</a>
+  <a data-page="pg-type">🔤 4 · Typography</a>
+  <a data-page="pg-vibe">🎬 5 · Art vibe &amp; generate</a>
+  <a data-page="pg-results">📋 My prompts</a>
+  <a data-page="pg-saved">♥ Saved prompts</a>
+  <a data-page="pg-custom">＋ Add your own queen</a>
+</nav>
+<div id="progress"><div class="ptext">Step 1 of 5</div><div class="pbar"><div class="pfill"></div></div></div>
+
+<div class="wrap">
+
+  <!-- HOME -->
+  <div class="page active" id="pg-home">
+    <header class="hero">
+      <div class="hero-imgwrap">
+        <img src="hero.webp" alt="A radiant group of diverse queens in sapphire and pearl gowns">
+        <div class="hero-overlay">
+          <h1>BE <span class="seen">SEEN</span></h1>
+          <div class="tagline">The Unseen Beauty Prompt Generator</div>
+          <p class="sub">Build stunning, dignified AI portraits celebrating the women the world overlooks — survivors, warriors &amp; queens. Pick her, style her, crown her with her power word.</p>
+        </div>
+      </div>
+    </header>
+
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="page" id="pg-queen">
+    <section class="step">
+      <div class="step-head"><div class="step-num">1</div><h2>Choose your queen</h2><button class="lockbtn" data-lock="queen" title="Lock this choice">🔓</button></div>
+      <p class="step-sub">Pick the women the world needs to see. Tap to select — pick as many as you like.</p>
+      <p class="multihint">💡 Multi-select is on: choose several queens to build portraits for all of them at once.</p>
+      <div class="grid" id="heroGrid"></div>
+      <div class="yours" style="margin-top:18px;">
+        <p>💛 Don't see her? Add your own queen — she'll be saved here.</p>
+        <button class="btn btn-chrome" id="toCustom" type="button">👑 Add Your Own Queen</button>
+      </div>
+      <div class="pagenav">
+        <button class="btn btn-ghost" data-goto="pg-home" type="button">← Home</button>
+        <button class="btn btn-primary" data-goto="pg-details" type="button">Continue →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="page" id="pg-details">
+    <section class="step">
+      <div class="step-head"><div class="step-num">2</div><h2>Her beauty details</h2></div>
+      <p class="step-sub">Shape how she shows up — tap to select, pick several if you want variety. Your custom additions save automatically.</p>
+      <label class="lbl">Skin tone <button class="lockbtn" data-lock="skin" title="Lock this choice">🔓</button></label><div class="chips" id="skinChips"></div>
+      <div class="addrow"><input type="text" id="add-skin" maxlength="60" placeholder="Add your own skin tone…"><button class="mini-btn" data-add="skin" type="button">＋ Add</button></div>
+      <label class="lbl">Age <button class="lockbtn" data-lock="age" title="Lock this choice">🔓</button></label><div class="chips" id="ageChips"></div>
+      <div class="addrow"><input type="text" id="add-age" maxlength="40" placeholder="Add your own age…"><button class="mini-btn" data-add="age" type="button">＋ Add</button></div>
+      <label class="lbl">Body <button class="lockbtn" data-lock="body" title="Lock this choice">🔓</button></label><div class="chips" id="bodyChips"></div>
+      <div class="addrow"><input type="text" id="add-body" maxlength="40" placeholder="Add your own…"><button class="mini-btn" data-add="body" type="button">＋ Add</button></div>
+      <label class="lbl">Hair / crown <button class="lockbtn" data-lock="hair" title="Lock this choice">🔓</button></label><div class="chips" id="hairChips"></div>
+      <div class="addrow"><input type="text" id="add-hair" maxlength="60" placeholder="Add your own hairstyle…"><button class="mini-btn" data-add="hair" type="button">＋ Add</button></div>
+      <label class="lbl">Outfit <button class="lockbtn" data-lock="outfit" title="Lock this choice">🔓</button></label><div class="chips" id="outfitChips"></div>
+      <div class="addrow"><input type="text" id="add-outfit" maxlength="80" placeholder="Add your own outfit…"><button class="mini-btn" data-add="outfit" type="button">＋ Add</button></div>
+      <label class="lbl">Setting <button class="lockbtn" data-lock="setting" title="Lock this choice">🔓</button></label><div class="chips" id="settingChips"></div>
+      <div class="addrow"><input type="text" id="add-setting" maxlength="80" placeholder="Add your own setting…"><button class="mini-btn" data-add="setting" type="button">＋ Add</button></div>
+      <div class="pagenav">
+        <button class="btn btn-ghost" data-goto="pg-queen" type="button">← Back</button>
+        <button class="btn btn-primary" data-goto="pg-word" type="button">Continue →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="page" id="pg-word">
+    <section class="step">
+      <div class="step-head"><div class="step-num">3</div><h2>Her power word</h2></div>
+      <p class="step-sub">The word that appears in the portrait — tap to select, pick several for variety.</p>
+      <div class="chips" id="wordChips"></div>
+      <label class="lbl" style="margin-top:18px;">Or write a custom word / short phrase <button class="lockbtn" data-lock="word" title="Lock this choice">🔓</button></label>
+      <div class="addrow"><input type="text" id="customWord" maxlength="40" placeholder="e.g. Still She Rises"><button class="mini-btn" data-add="word" type="button">＋ Save</button></div>
+      <p class="hint">💡 Type a word above to use it just this once — or hit ＋ Save to keep it as an option forever.</p>
+      <div class="pagenav">
+        <button class="btn btn-ghost" data-goto="pg-details" type="button">← Back</button>
+        <button class="btn btn-primary" data-goto="pg-type" type="button">Continue →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="page" id="pg-type">
+    <section class="step">
+      <div class="step-head"><div class="step-num">4</div><h2>Typography style</h2><button class="lockbtn" data-lock="type" title="Lock this choice">🔓</button></div>
+      <p class="step-sub">How her power word looks — tap to select, pick several for variety.</p>
+      <div class="grid tight" id="typeGrid"></div>
+      <label class="lbl" style="margin-top:18px;">Or describe your own style <button class="lockbtn" data-lock="type" title="Lock this choice">🔓</button></label>
+      <div class="addrow2">
+        <input type="text" id="add-type-desc" maxlength="80" placeholder="How the letters look…">
+        <input type="text" id="add-type-place" maxlength="80" placeholder="Where they sit…">
+        <button class="mini-btn" data-add="type" type="button">＋ Add</button>
+      </div>
+      <div class="pagenav">
+        <button class="btn btn-ghost" data-goto="pg-word" type="button">← Back</button>
+        <button class="btn btn-primary" data-goto="pg-vibe" type="button">Continue →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="page" id="pg-vibe">
+    <section class="step">
+      <div class="step-head"><div class="step-num">5</div><h2>Art vibe &amp; generate</h2><button class="lockbtn" data-lock="vibe" title="Lock this choice">🔓</button></div>
+      <p class="step-sub">The overall look and feel — tap to select, pick several for variety.</p>
+      <div class="grid tight" id="vibeGrid"></div>
+      <label class="lbl" style="margin-top:18px;">Or describe your own vibe <button class="lockbtn" data-lock="vibe" title="Lock this choice">🔓</button></label>
+      <div class="addrow"><input type="text" id="add-vibe" maxlength="80" placeholder="e.g. dreamy pastel illustration style…"><button class="mini-btn" data-add="vibe" type="button">＋ Add</button></div>
+      <div class="countrow">
+        <label class="lbl" style="margin:0;">Variations:</label>
+        <input type="range" id="countRange" min="1" max="10" value="4">
+        <div class="countval"><span id="countNum">4</span> prompts</div>
+      </div>
+      <div class="btnrow">
+        <button class="btn btn-primary" id="genBtn" type="button">✨ Generate Prompts</button>
+        <button class="btn btn-chrome" id="surpriseBtn" type="button">🎲 Surprise Me</button>
+      </div>
+      <div class="pagenav">
+        <button class="btn btn-ghost" data-goto="pg-type" type="button">← Back</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="page" id="pg-results">
+    <section class="step">
+      <div class="step-head"><div class="step-num">✓</div><h2>My prompts</h2></div>
+      <p class="step-sub">Paste these into your favorite AI image tool — Midjourney, DALL·E, Firefly, Ideogram, whatever you love. Tap ♥ to save your favorites.</p>
+      <div class="dignity" style="margin:0 0 16px;">🖼️ Each prompt makes ONE separate image — never a collage.</div>
+      <div class="btnrow" style="margin-top:0; margin-bottom:16px;">
+        <button class="btn btn-ghost" id="copyAllBtn" type="button">📋 Copy All</button>
+      </div>
+      <div id="promptList"></div>
+      <div class="yours">
+        <p>💛 These are my 50 starter queens — but this generator is YOURS now. Want to add your own?</p>
+        <button class="btn btn-chrome" id="yoursBtn" type="button">👑 Add Your Own Queen</button>
+      </div>
+      <div class="pagenav">
+        <button class="btn btn-ghost" data-goto="pg-vibe" type="button">← Back</button>
+        <button class="btn btn-chrome" data-goto="pg-home" type="button">🏠 Home</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- SAVED -->
+  <div class="page" id="pg-saved">
+    <section class="step">
+      <div class="step-head"><div class="step-num">♥</div><h2>Saved prompts</h2></div>
+      <p class="step-sub">Your favorite prompts, kept safe on this device.</p>
+      <div id="savedList"></div>
+      <div class="pagenav">
+        <button class="btn btn-chrome" data-goto="pg-home" type="button">🏠 Home</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- CUSTOM QUEEN -->
+  <div class="page" id="pg-custom">
+    <section class="step" id="customQueen">
+      <div class="step-head"><div class="step-num">👑</div><h2>Make it yours — add your own queen</h2></div>
+      <p class="step-sub">Create a new queen with this simple 3-part formula. She joins the list in Step 1, works exactly like the others — and she's saved automatically.</p>
+      <div class="formula">
+        <div><b>1. NAME HER</b><br>Give the category a proud name.<br><i>Examples: "Osteoporosis Queen", "Rosacea Queen", "Tourette Queen", "Scleroderma Warrior", "Myasthenia Queen".</i></div>
+        <div><b>2. DESCRIBE HER WITH DIGNITY</b><br>Beauty FIRST, strength ALWAYS, pity NEVER. No sad or weepy words. Template: "a [uplifting adjective] [person], [what makes her radiant], [her strength]".</div>
+        <div><b>3. USE HER</b><br>Tap the button below — she joins your queen list, saves automatically, and you can build prompts with her right away.</div>
+      </div>
+      <label class="lbl" for="cqName">Her proud name</label>
+      <input type="text" id="cqName" maxlength="40" placeholder="e.g. Stroke Survivor">
+      <label class="lbl">Her emoji</label>
+      <div class="chips" id="cqEmojiChips"></div>
+      <label class="lbl" for="cqDesc">Her dignity-first description</label>
+      <textarea id="cqDesc" rows="3" maxlength="240" placeholder="a radiant queen living with chronic illness, her quiet strength glowing through every portrait, unbothered and luminous"></textarea>
+      <p class="hint">💛 Beauty FIRST · strength ALWAYS · pity NEVER — no sad, weepy, or sorrowful words, ever.</p>
+      <div class="goodbad">
+        <div class="good"><b>GOOD ✓</b><br>"a radiant queen living with chronic illness, her quiet strength glowing through every portrait, unbothered and luminous"</div>
+        <div class="bad"><b>BAD ✗</b><br>"a poor sick woman suffering from illness" — never like this.</div>
+      </div>
+      <div class="warn" id="cqWarn" style="display:none;"></div>
+      <div class="win" id="cqWin" style="display:none;"></div>
+      <div class="btnrow">
+        <button class="btn btn-primary" id="cqAdd" type="button">👑 Add Her to My Queens</button>
+      </div>
+      <div class="pagenav">
+        <button class="btn btn-ghost" data-goto="pg-queen" type="button">← Back to queens</button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="ctarow">
+      <a class="cta-pill" href="https://payhip.com/b/54LoK" target="_blank" rel="noopener">✨ Join The Glam Vault</a>
+      <a class="cta-pill" href="https://glamhustlehub.com" target="_blank" rel="noopener">🛍️ Shop Glam Hustle Hub</a>
+    </div>
+    <p class="tagline">Every woman deserves to be seen.</p>
+    <p class="sigline">made with ♥ by Indigo, Glam's AI assistant</p>
+  </footer>
+</div>
+
+<button id="helpFab" aria-label="How to use">?</button>
+<div class="help-scrim" id="helpScrim"></div>
+<div class="help-modal" id="helpModal" role="dialog" aria-label="How to use Be Seen">
+  <div class="help-card">
+    <button class="icon-btn help-close" id="helpClose" aria-label="Close">×</button>
+    <h2>How to use Be Seen 👑</h2>
+    <div class="help-steps">
+      <div><b>1.</b> Tap <b>☰</b> up top and start at <b>1 · Choose your queen</b> — pick one queen or several.</div>
+      <div><b>2.</b> Style her: beauty details, power word, typography, art vibe. Multi-select is on everywhere.</div>
+      <div><b>3.</b> Hit <b>✨ Generate</b> — copy your prompts into Midjourney, DALL·E, Ideogram, Firefly, whatever you love. Tap <b>♥</b> to save favorites.</div>
+    </div>
+    <div class="help-steps">
+      <div><b>🔒 Locks:</b> tap the lock next to any category to keep your pick fixed when you hit Surprise Me.</div>
+      <div><b>None:</b> the first option in every category — leave it picked and the app chooses for you.</div>
+      <div><b>🎲 / 📋</b> bottom-left: Surprise Me and Copy are always one tap away, on every page.</div>
+    </div>
+    <p class="help-tip">💡 Anything custom you add is saved automatically — it'll be here next time.</p>
+    <div class="stats" style="margin:14px 0 4px;">
+      <span><b>50</b> Queens</span><span><b>50</b> Power Words</span>
+      <span><b>50</b> Typography</span><span><b>53</b> Art Vibes</span>
+    </div>
+    <div class="dignity" style="margin-top:14px;">🤍 Every portrait celebrates strength — never pity.</div>
+  </div>
+</div>
+
+<div class="fabstack">
+  <button id="fabSurprise" title="Surprise me" aria-label="Surprise me">🎲</button>
+  <button id="fabCopy" title="Copy my prompts" aria-label="Copy prompts">📋</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* ============================== DATA ============================== */
+const HEROES = [{"name": "DV Survivor", "emoji": "🕊️", "desc": "Radiant, healing, unbreakable spirit", "prompt": "a radiant domestic violence survivor, serene and powerful, soft light honoring her healed strength"}, {"name": "Alopecia Queen", "emoji": "👑", "desc": "Bald, bold & breathtakingly beautiful", "prompt": "a stunning queen with alopecia, her smooth bald head glowing like polished bronze, regal and confident"}, {"name": "Wheelchair Queen", "emoji": "♿", "desc": "Seated like royalty, rolling in glam", "prompt": "a glamorous queen seated like royalty in a sleek modern wheelchair, poised and radiant"}, {"name": "Prosthetic Goddess", "emoji": "🦿", "desc": "Strutting with her blade / jeweled limb", "prompt": "a confident goddess with a beautiful jeweled prosthetic leg, strutting with fierce elegance"}, {"name": "Vitiligo Beauty", "emoji": "🎨", "desc": "Her skin tells a story in living art", "prompt": "a breathtaking beauty whose vitiligo patterns sweep across her skin like living art"}, {"name": "Burn Survivor", "emoji": "🔥", "desc": "Healed, glowing, unbothered", "prompt": "a radiant burn survivor, her healed skin glowing with grace, unbothered and luminous"}, {"name": "Mastectomy Warrior", "emoji": "🎀", "desc": "Her scar worn like a crown jewel", "prompt": "a powerful mastectomy warrior, her scar worn like a crown jewel, fierce and tender"}, {"name": "Deaf Queen", "emoji": "🤟", "desc": "Signing love, loud in her silence", "prompt": "a joyful Deaf queen signing 'I love you' in ASL, expressive eyes full of warmth"}, {"name": "Blind Queen", "emoji": "🕶️", "desc": "Elegant shades, chic cane, vision within", "prompt": "an elegant blind queen in stylish sunglasses holding a chic white cane, serene confidence"}, {"name": "Cane Queen", "emoji": "💎", "desc": "Graceful, jeweled cane in hand", "prompt": "a graceful queen leaning on a jeweled cane, elegance in every step"}, {"name": "Plus-Size Goddess", "emoji": "💃", "desc": "Curves celebrated, never hidden", "prompt": "a gorgeous plus-size goddess, her curves celebrated and styled to perfection, never hidden"}, {"name": "Service Dog Duo", "emoji": "🐕‍🦺", "desc": "Her loyal partner by her side", "prompt": "a warm queen with her loyal service dog sitting proudly beside her, a team of hearts"}, {"name": "Stroke Survivor", "emoji": "🧠", "desc": "Reclaiming her stride, unstoppable", "prompt": "a radiant stroke survivor, reclaiming her stride with grace, her determination glowing in every frame, unstoppable and luminous"}, {"name": "Breast Cancer Survivor", "emoji": "💗", "desc": "Healed, crowned, victorious", "prompt": "a breathtaking breast cancer survivor, her healed strength shining like a crown, radiant and victorious"}, {"name": "PCOS Queen", "emoji": "🌸", "desc": "Blooming beyond every label", "prompt": "a radiant queen thriving with PCOS, her confidence blooming brighter than any diagnosis, beautiful and unbothered"}, {"name": "Infertility Warrior", "emoji": "🤍", "desc": "Hope blooming, resilient heart", "prompt": "a graceful warrior on her fertility journey, her hope blooming like a garden in spring, radiant and resilient"}, {"name": "Bipolar Queen", "emoji": "🦋", "desc": "Riding her waves with power", "prompt": "a radiant queen with bipolar disorder, riding her waves with grace and power, luminous and unshakable"}, {"name": "Depression Survivor", "emoji": "🌅", "desc": "Rising like the morning sun", "prompt": "a luminous depression survivor, rising like the morning sun after the longest night, radiant and reborn"}, {"name": "Anxiety Warrior", "emoji": "🌊", "desc": "Fierce calm, hard-won peace", "prompt": "a courageous warrior moving through anxiety with fierce calm, her peace hard-won and glowing, steady and strong"}, {"name": "PTSD Survivor", "emoji": "💫", "desc": "Survival turned sacred strength", "prompt": "a powerful PTSD survivor, turning her survival into sacred strength, grounded and glowing"}, {"name": "Diabetes Warrior", "emoji": "💙", "desc": "Thriving, steady, unstoppable", "prompt": "a vibrant warrior thriving with diabetes, her strength steady as her stride, radiant and in control"}, {"name": "Hypertension Queen", "emoji": "🫀", "desc": "Calm is her superpower", "prompt": "a radiant queen living with hypertension, her calm a superpower, her heart guarded like royalty, serene and strong"}, {"name": "ADHD Queen", "emoji": "⚡", "desc": "Electric mind, unstoppable ideas", "prompt": "a brilliant queen with ADHD, her mind a fireworks show of ideas, electric and unstoppable"}, {"name": "Little Person Queen", "emoji": "🌟", "desc": "Greatness in every size", "prompt": "a radiant little person queen, proving greatness comes in every size, regal and unstoppable"}, {"name": "Down Syndrome Queen", "emoji": "🌈", "desc": "Pure sunshine and strength", "prompt": "a joyful queen with Down syndrome, her smile lighting up every room, pure sunshine and strength"}, {"name": "Angel Mom Warrior", "emoji": "🌷", "desc": "Love eternal, held and whole", "prompt": "a tender warrior mama honoring her angel babies, her love eternal and unbreakable, held and whole"}, {"name": "Lupus Warrior", "emoji": "💜", "desc": "Fierce through every flare", "prompt": "a fierce warrior living with lupus, her strength flaring brighter than any flare-up, resilient and radiant"}, {"name": "Autistic Queen", "emoji": "🧩", "desc": "Beautifully, brilliantly her", "prompt": "a brilliant autistic queen, her mind a beautiful different kind of brilliant, authentic and unstoppable"}, {"name": "Endometriosis Warrior", "emoji": "🌺", "desc": "Stronger than the pain", "prompt": "a courageous warrior facing endometriosis, her strength deeper than her pain, fierce and unbreakable"}, {"name": "Albinism Queen", "emoji": "🌙", "desc": "Luminous and proud", "prompt": "a stunning queen with albinism, her glow otherworldly and rare, luminous and proud"}, {"name": "Silver Queen", "emoji": "🦳", "desc": "Timeless, wise, radiant", "prompt": "a magnificent silver queen in her 60s and beyond, her wisdom her crown, timeless and radiant"}, {"name": "Chronic Illness Queen", "emoji": "🌿", "desc": "Thriving, luminous, unbothered", "prompt": "a radiant queen thriving with chronic illness, her quiet strength glowing through every portrait, unbothered and luminous"}, {"name": "Eating Disorder Survivor", "emoji": "🌻", "desc": "Reclaiming her body and joy", "prompt": "a beautiful eating disorder survivor, reclaiming her body and her joy, radiant and free"}, {"name": "Fibromyalgia Warrior", "emoji": "🪷", "desc": "Gentle strength, undeniable glow", "prompt": "a resilient warrior living with fibromyalgia, her softness a strength and her glow undeniable, gentle and unbreakable"}, {"name": "Sickle Cell Warrior", "emoji": "❤️", "desc": "Courage deeper than blood", "prompt": "a fierce sickle cell warrior, her courage running deeper than her blood, bold and unstoppable"}, {"name": "Cerebral Palsy Queen", "emoji": "🌼", "desc": "Her movement, her dance", "prompt": "a joyful queen with cerebral palsy, her movement a dance all her own, radiant and free"}, {"name": "Kidney Warrior", "emoji": "💧", "desc": "Fierce fight, unshaken faith", "prompt": "a strong warrior thriving on dialysis, her fight fierce and her faith unshaken, courageous and glowing"}, {"name": "Epilepsy Warrior", "emoji": "🌩️", "desc": "Steady light, brave heart", "prompt": "a fearless warrior living with epilepsy, her light steady through every storm, brave and luminous"}, {"name": "Migraine Warrior", "emoji": "🌤️", "desc": "Rising clearer every time", "prompt": "a graceful warrior who faces migraines head-on, rising clearer and brighter every time, resilient and radiant"}, {"name": "Transplant Survivor", "emoji": "🌱", "desc": "Second chance, worn like a crown", "prompt": "a grateful transplant survivor, carrying her second chance like a crown, reborn and radiant"}, {"name": "Heart Warrior", "emoji": "💓", "desc": "Heartbeat of victory", "prompt": "a courageous heart warrior, her heartbeat a drumline of victory, bold and alive"}, {"name": "Thyroid Queen", "emoji": "🪶", "desc": "Balanced, vibrant, rising", "prompt": "a glowing queen balancing her thyroid and her crown, her energy rising like the sun, vibrant and unstoppable"}, {"name": "Menopause Queen", "emoji": "🌞", "desc": "Hotter, wiser, free", "prompt": "a magnificent queen owning her menopause era, hotter and wiser than ever, confident and free"}, {"name": "Postpartum Warrior", "emoji": "🤱", "desc": "Healing at her own pace", "prompt": "a tender postpartum warrior, healing at her own pace with her baby in her arms, soft and powerful"}, {"name": "Caregiver Queen", "emoji": "🫶", "desc": "Her light never dims", "prompt": "a devoted caregiver queen, pouring love into everyone around her, her own light never dimming, nurturing and noble"}, {"name": "Single Mom Warrior", "emoji": "👩‍👧", "desc": "Doing it all in style", "prompt": "a powerhouse single mom, doing it all with style and grace, her hustle holy and her crown secure"}, {"name": "Veteran Queen", "emoji": "🎖️", "desc": "Service etched in strength", "prompt": "a decorated veteran queen, her service etched in strength, standing tall and proud"}, {"name": "Eczema Queen", "emoji": "🍯", "desc": "Glowing and unbothered", "prompt": "a stunning queen with eczema, her skin telling its own beautiful story, glowing and unbothered"}, {"name": "Psoriasis Queen", "emoji": "🐚", "desc": "Skin like couture", "prompt": "a confident queen with psoriasis, wearing her skin like couture, bold and beautiful"}, {"name": "Cleft Beauty", "emoji": "💋", "desc": "A grin that lights rooms", "prompt": "a breathtaking beauty with a cleft smile, her grin lighting up every frame, joyful and radiant"}];
+const WORDS = ["SURVIVOR", "STILL STANDING", "UNBREAKABLE", "SEEN", "WORTHY", "WARRIOR", "RADIANT", "ENOUGH", "FEARLESS", "REBORN", "BEAUTIFULLY WHOLE", "MY STORY", "SHE PERSISTED", "CROWNED", "UNSTOPPABLE", "PHOENIX RISING", "RESILIENT", "LIMITLESS", "VICTORIOUS", "THRIVING", "ROYALTY", "COURAGEOUS", "RECLAIMED", "UNSHAKEABLE", "STILL HERE", "SHE ROSE", "UNBOWED", "LUMINOUS", "ICONIC", "LEGENDARY", "POWERHOUSE", "PURE MAGIC", "BLOOMING", "FLOURISHING", "WHOLE", "HEALED", "HONORED", "ADORED", "CHOSEN", "ANOINTED", "UNSEEN NO MORE", "SHE DID THAT", "OVERCOMER", "BUILT TO LAST", "SOFT AND STRONG", "MAIN CHARACTER", "HER ERA", "GLOW UP", "GOLDEN", "DIVINE"];
+const TYPES = [{"name": "Bubble Letters", "emoji": "🫧", "prompt": "playful glossy 3D bubble letters in candy sapphire and pearl tones", "place": "floating above her like a joyful crown"}, {"name": "3D Block", "emoji": "🧱", "prompt": "bold 3D block letters with chrome-silver bevels", "place": "arched proudly behind her"}, {"name": "Graffiti Wildstyle", "emoji": "🎨", "prompt": "vibrant graffiti wildstyle letters with sapphire and gold flourishes", "place": "blazing across the background wall"}, {"name": "Elegant Script", "emoji": "✒️", "prompt": "flowing elegant calligraphy script in liquid gold", "place": "sweeping gracefully beneath her portrait"}, {"name": "Chrome Liquid", "emoji": "💧", "prompt": "molten liquid-chrome letters with mirror shine", "place": "rippling across the lower frame"}, {"name": "Rhinestone Bling", "emoji": "💎", "prompt": "sparkling rhinestone-encrusted letters that catch the light", "place": "glittering above her like a marquee"}, {"name": "Varsity", "emoji": "🏟️", "prompt": "classic chenille varsity letters in sapphire and white", "place": "stitched boldly across the scene"}, {"name": "Retro Groovy", "emoji": "🌼", "prompt": "retro 70s groovy letters in warm sunset ombre", "place": "dancing playfully around her"}, {"name": "Bold Minimal", "emoji": "⬛", "prompt": "clean bold sans-serif letters in deep navy", "place": "anchoring the bottom with quiet power"}, {"name": "Watercolor Brush", "emoji": "🖌️", "prompt": "soft watercolor brush-stroke letters in sapphire washes", "place": "painted gently across the sky"}, {"name": "Neon Glow", "emoji": "💡", "prompt": "glowing neon-sign letters in electric sapphire", "place": "buzzing to life behind her"}, {"name": "Gold Foil", "emoji": "✨", "prompt": "luxurious gold-foil stamped letters with rich texture", "place": "pressed elegantly into the corner like a seal"}, {"name": "Balloon Bliss", "emoji": "🎈", "prompt": "inflated 3D balloon letters in shiny sapphire and pearl", "place": "floating playfully at the top of the frame"}, {"name": "Glitter Bomb", "emoji": "🌟", "prompt": "chunky glitter-covered letters exploding with sparkle", "place": "scattered joyfully across the scene"}, {"name": "Holographic", "emoji": "🌈", "prompt": "iridescent holographic letters shifting sapphire, silver and pearl", "place": "shimmering across the middle of the portrait"}, {"name": "Floral Bloom", "emoji": "🌸", "prompt": "letters blooming with fresh flowers and soft petals", "place": "growing gracefully along the bottom"}, {"name": "Stained Glass", "emoji": "🪟", "prompt": "stained-glass mosaic letters glowing with sapphire light", "place": "shining like a window behind her"}, {"name": "Plush Soft", "emoji": "🧸", "prompt": "soft fuzzy plush letters in pastel sapphire tones", "place": "resting cozily across the lower frame"}, {"name": "Rose Gold Metal", "emoji": "🌹", "prompt": "polished rose-gold metallic letters with luxe reflections", "place": "gleaming elegantly above her"}, {"name": "Comic Burst", "emoji": "💥", "prompt": "comic-book burst letters with bold outlines and action lines", "place": "popping off the background with energy"}, {"name": "Pearl Lettering", "emoji": "📿", "prompt": "letters formed from lustrous white pearls", "place": "strung like a necklace across the top of the frame"}, {"name": "Sapphire Crystal", "emoji": "🔷", "prompt": "faceted sapphire-gemstone letters catching the light", "place": "standing tall like jewels behind her"}, {"name": "Mirror Shine", "emoji": "🪞", "prompt": "polished mirror-finish letters reflecting her glow", "place": "leaning elegantly along the left side"}, {"name": "Silk Scarf", "emoji": "🧣", "prompt": "flowing silk-scarf letters in pearl and sapphire", "place": "draping gracefully around her"}, {"name": "Diamond Dust", "emoji": "🔹", "prompt": "letters dusted in fine diamond sparkle over chrome", "place": "shimmering across the upper frame"}, {"name": "Frosted Glass", "emoji": "🧊", "prompt": "frosted-glass letters with a soft icy glow", "place": "floating gently in the foreground"}, {"name": "Velvet Script", "emoji": "🎭", "prompt": "deep sapphire velvet calligraphy with a soft sheen", "place": "sweeping romantically beneath her portrait"}, {"name": "Champagne Bubbles", "emoji": "🥂", "prompt": "letters rising like champagne bubbles in gold", "place": "fizzing playfully upward behind her"}, {"name": "Cloud Puff", "emoji": "🌥️", "prompt": "soft pillowy cloud letters in pearl white", "place": "drifting dreamily across the sky"}, {"name": "Fairy Wings", "emoji": "🧚", "prompt": "letters with delicate fairy wings in sapphire and pearl", "place": "fluttering lightly above her"}, {"name": "Feather Soft", "emoji": "🪶", "prompt": "letters made of soft white feathers", "place": "resting lightly along the bottom"}, {"name": "Lace Filigree", "emoji": "👰", "prompt": "delicate white lace-patterned letters", "place": "draped elegantly across the corner like a veil"}, {"name": "Marble Luxe", "emoji": "🏛️", "prompt": "polished white marble letters with silver veining", "place": "standing noble behind her"}, {"name": "Opal Glow", "emoji": "🔮", "prompt": "opalescent letters shifting pearl, sapphire and silver", "place": "glowing softly in the middle of the frame"}, {"name": "Starlight", "emoji": "🌠", "prompt": "letters formed from twinkling stars", "place": "sparkling across the sky behind her"}, {"name": "Moonbeam", "emoji": "🌙", "prompt": "glowing crescent-lit letters in silvery blue", "place": "beaming down from the top corner"}, {"name": "Ocean Pearl", "emoji": "🦪", "prompt": "letters like pearls fresh from the sea with aqua shimmer", "place": "resting along the lower frame"}, {"name": "Crystal Quartz", "emoji": "💠", "prompt": "clear quartz crystal letters catching rainbow light", "place": "standing like a crown above her"}, {"name": "Gilded Baroque", "emoji": "🏰", "prompt": "ornate gold baroque letters with flourishes", "place": "framing her like a royal portrait"}, {"name": "Art Deco", "emoji": "🌃", "prompt": "sleek geometric art-deco letters in chrome and sapphire", "place": "arching in a fan above her"}, {"name": "Disco Mirror", "emoji": "🪩", "prompt": "disco-ball mirrored tile letters", "place": "sparkling with party light across the background"}, {"name": "Cotton Candy", "emoji": "🍭", "prompt": "fluffy cotton-candy letters in sapphire and pearl swirls", "place": "floating sweetly at the top"}, {"name": "Ice Sculpture", "emoji": "❄️", "prompt": "carved ice letters with a frosty gleam", "place": "standing crisp behind her"}, {"name": "Porcelain", "emoji": "🍶", "prompt": "smooth porcelain letters with a delicate glaze", "place": "resting elegantly in the lower corner"}, {"name": "Origami", "emoji": "🦢", "prompt": "folded-paper letters in pearl, crisp as origami", "place": "folded artfully across the middle"}, {"name": "Marquee Lights", "emoji": "🎪", "prompt": "Broadway marquee letters ringed with glowing bulbs", "place": "lit up bright behind her like a premiere"}, {"name": "Chalk Glam", "emoji": "🖍️", "prompt": "chic chalk-style letters in white with sparkle doodles", "place": "written playfully across a sapphire board behind her"}, {"name": "Embroidery", "emoji": "🧵", "prompt": "stitched embroidery letters in sapphire thread on pearl fabric", "place": "sewn lovingly across the scene"}, {"name": "Sequin Shimmer", "emoji": "🎇", "prompt": "letters fully covered in sapphire sequins", "place": "dazzling across the middle of the frame"}, {"name": "Calligraphy Ink", "emoji": "🖋️", "prompt": "bold brush calligraphy in deep sapphire ink", "place": "painted with confidence down the side"}];
+const VIBES = [{"name": "Glam Portrait", "emoji": "💄", "prompt": "luxurious beauty-portrait style, soft studio lighting, flawless glow"}, {"name": "Editorial", "emoji": "📸", "prompt": "high-fashion magazine editorial style, dramatic and striking"}, {"name": "Soft & Dreamy", "emoji": "☁️", "prompt": "soft dreamy style, gentle haze, ethereal light"}, {"name": "Bold Pop Art", "emoji": "💥", "prompt": "bold pop-art style, vivid color blocks, graphic punch"}, {"name": "Golden Hour", "emoji": "🌅", "prompt": "golden-hour glow style, warm sunlight, radiant warmth"}, {"name": "Cinematic", "emoji": "🎬", "prompt": "cinematic style, rich depth, film-still grandeur"}, {"name": "Watercolor Painting", "emoji": "🖼️", "prompt": "delicate watercolor painting style, soft washes of sapphire and pearl"}, {"name": "Oil Painting", "emoji": "🎨", "prompt": "rich classic oil painting style, visible brushstrokes, timeless glow"}, {"name": "Renaissance Portrait", "emoji": "🏛️", "prompt": "renaissance-master portrait style, regal pose, luminous skin"}, {"name": "Impressionist", "emoji": "🌇", "prompt": "dreamy impressionist style, dappled light, soft color"}, {"name": "Baroque Glam", "emoji": "🕯️", "prompt": "lavish baroque style, dramatic light, golden richness"}, {"name": "Art Deco Glam", "emoji": "🌃", "prompt": "sleek art deco style, geometric gold lines, 1920s luxe"}, {"name": "Hollywood Golden Age", "emoji": "🎞️", "prompt": "1940s Hollywood glamour style, silver-screen lighting"}, {"name": "Disco Glam", "emoji": "💿", "prompt": "sparkling disco-glam style, mirror-ball light, joyful shine"}, {"name": "Retro 70s", "emoji": "☮️", "prompt": "groovy retro 70s style, warm tones, carefree glow"}, {"name": "Y2K Sparkle", "emoji": "💽", "prompt": "playful Y2K style, chrome shine, bubblegum gloss"}, {"name": "Afrofuturism", "emoji": "🛸", "prompt": "stunning afrofuturist style, cosmic gold, ancestral pride"}, {"name": "Anime Glow", "emoji": "⛩️", "prompt": "radiant anime style, luminous eyes, vibrant color"}, {"name": "3D Render Luxe", "emoji": "🎮", "prompt": "ultra-smooth 3D render style, flawless light, polished glow"}, {"name": "Pop Surrealism", "emoji": "🍄", "prompt": "whimsical pop-surrealist style, dreamlike details, joyful color"}, {"name": "Mermaid Fantasy", "emoji": "🧜‍♀️", "prompt": "enchanting mermaid-fantasy style, iridescent scales, ocean glow"}, {"name": "Fairy Tale", "emoji": "🪄", "prompt": "magical fairy-tale style, storybook light, wonder in her eyes"}, {"name": "Goddess Energy", "emoji": "☀️", "prompt": "divine goddess style, golden aura, powerful serenity"}, {"name": "Royal Portrait", "emoji": "👑", "prompt": "majestic royal-portrait style, throne-room light, timeless power"}, {"name": "Red Carpet", "emoji": "⭐", "prompt": "dazzling red-carpet style, flashbulb glow, star power"}, {"name": "Magazine Cover", "emoji": "📰", "prompt": "high-gloss magazine-cover style, iconic pose, cover-star energy"}, {"name": "Beauty Campaign", "emoji": "🧴", "prompt": "luxury beauty-campaign style, flawless skin, studio perfection"}, {"name": "Perfume Ad", "emoji": "🪭", "prompt": "dreamy perfume-ad style, floating fabric, irresistible allure"}, {"name": "Music Video", "emoji": "🎤", "prompt": "electric music-video style, dynamic light, superstar energy"}, {"name": "Concert Stage", "emoji": "🎶", "prompt": "show-stopping concert style, spotlight beams, crowd magic"}, {"name": "Bollywood Glam", "emoji": "🦚", "prompt": "vibrant Bollywood-glam style, rich color, joyful drama"}, {"name": "Nollywood Glow", "emoji": "📽️", "prompt": "radiant Nollywood style, celebratory light, queenly drama"}, {"name": "Runway Fierce", "emoji": "👠", "prompt": "high-fashion runway style, dramatic stride, editorial power"}, {"name": "Street Style", "emoji": "🚕", "prompt": "chic street-style look, city light, effortless cool"}, {"name": "Boho Luxe", "emoji": "🌾", "prompt": "elegant boho-luxe style, flowing layers, sunlit ease"}, {"name": "Garden Party", "emoji": "💐", "prompt": "lovely garden-party style, blooming florals, afternoon light"}, {"name": "Tea Party Luxe", "emoji": "🫖", "prompt": "charming luxury tea-party style, porcelain and pearls"}, {"name": "Brunch Glam", "emoji": "🥞", "prompt": "sunny brunch-glam style, golden morning, laughter in the air"}, {"name": "Poolside Luxe", "emoji": "🏝️", "prompt": "glamorous poolside style, sparkling water, resort glow"}, {"name": "Yacht Luxe", "emoji": "🛥️", "prompt": "luxury yacht style, sea breeze, champagne light"}, {"name": "Tropical Paradise", "emoji": "🌴", "prompt": "lush tropical style, palm glow, island radiance"}, {"name": "Cherry Blossom", "emoji": "🎋", "prompt": "soft cherry-blossom style, petal drift, spring glow"}, {"name": "Desert Goddess", "emoji": "🏜️", "prompt": "golden desert-goddess style, warm dunes, sunlit power"}, {"name": "Winter Sparkle", "emoji": "⛄", "prompt": "sparkling winter style, snowlight glow, cozy luxe"}, {"name": "Celestial", "emoji": "🌌", "prompt": "heavenly celestial style, starlit glow, cosmic calm"}, {"name": "Angelic Glow", "emoji": "😇", "prompt": "soft angelic style, halo light, pure radiance"}, {"name": "Masquerade Glam", "emoji": "🎭", "prompt": "elegant masquerade style, jeweled mask, candlelit luxe"}, {"name": "Carnival Glam", "emoji": "🎉", "prompt": "joyful carnival style, confetti color, celebration energy"}, {"name": "Pastel Dream", "emoji": "🩷", "prompt": "sweet pastel-dream style, cotton-candy tones, gentle glow"}, {"name": "Chrome Futuristic", "emoji": "🤖", "prompt": "sleek chrome-future style, metallic shine, modern goddess"}, {"name": "Exaggerated Chibi", "emoji": "🎀", "prompt": "airbrushed chibi cartoon, CGI caricature style, large exaggerated hazel eyes, exaggerated tilted expression, full long dramatic lashes, full glossy lips, bold glam makeup, high gloss, vibrant and eye-catching, full-body portrait, she fills the frame head to toe, complete visible arms, hands, legs and body, balanced chibi proportions, no cropping, no cut-off limbs"}, {"name": "Chibi Glam", "emoji": "💅", "prompt": "glamorous chibi style, kawaii luxury, sparkly and chic, adorable diva energy"}, {"name": "Chibi Royalty", "emoji": "👑", "prompt": "regal chibi style, tiny crown, royal cuteness, majestic and adorable"}];
+const SKINS = ["deepest espresso (neutral undertone)", "deep ebony (cool undertone)", "rich espresso (warm undertone)", "dark cocoa (neutral undertone)", "deep mahogany (warm undertone)", "rich mocha (cool undertone)", "dark walnut (warm golden undertone)", "deep chestnut (neutral undertone)", "warm espresso (red undertone)", "rich cocoa (warm undertone)", "deep bronze (golden undertone)", "dark honey (warm undertone)", "rich amber (golden undertone)", "warm mahogany (red undertone)", "deep caramel (neutral undertone)", "toasted almond (warm undertone)", "rich toffee (golden undertone)", "warm bronze (neutral undertone)", "golden cocoa (warm undertone)", "sunlit mahogany (golden undertone)", "rich honey (warm undertone)", "warm caramel (golden undertone)", "golden amber (warm undertone)", "toasted honey (neutral undertone)", "warm toffee (peachy undertone)", "sun-kissed bronze (golden undertone)", "golden beige (warm undertone)", "warm sand (neutral undertone)", "honey beige (golden undertone)", "soft caramel (peachy undertone)", "warm olive (golden undertone)", "golden olive (warm undertone)", "light bronze (neutral undertone)", "warm tan (peachy undertone)", "sunlit beige (warm undertone)", "soft honey (neutral undertone)", "light toffee (warm undertone)", "creamy tan (neutral undertone)", "warm ivory (peachy undertone)", "soft beige (neutral undertone)", "light sand (warm undertone)", "creamy beige (pink undertone)", "pale honey (neutral undertone)", "soft ivory (warm undertone)", "light porcelain (neutral undertone)", "creamy porcelain (pink undertone)", "pale porcelain (cool undertone)", "fair ivory (neutral undertone)", "lightest porcelain (cool undertone)", "fair porcelain (pink undertone)"];
+const AGES = ["in her early 20s", "in her mid 20s", "in her late 20s", "in her early 30s", "in her mid 30s", "in her late 30s", "in her early 40s", "in her mid 40s", "in her late 40s", "in her early 50s", "in her mid 50s", "in her late 50s", "in her early 60s", "in her mid 60s", "in her late 60s", "in her early 70s", "in her mid 70s", "in her late 70s"];
+const BODIES = ["slim-thick", "curvy", "plus-size", "athletic", "soft and full", "hourglass", "full-figured", "thick and beautiful", "petite and powerful", "tall and statuesque", "strong and toned", "soft and curvy", "beautifully built", "voluptuous", "queenly and full"];
+const HAIR = ["bald and proud", "a regal gold headwrap", "voluminous natural curls", "long goddess braids", "elegant locs", "a sleek bob", "a satin bonnet crown", "silver-streaked coils", "knotless box braids", "long faux locs", "passion twists", "bantu knots", "a wash-and-go fro", "a silk press", "a chic pixie cut", "Senegalese twists", "goddess locs", "a high puff", "two-strand twists", "a blowout with body", "finger waves", "a sleek high ponytail", "a low sleek bun", "a messy topknot bun", "soft bouncy curls", "a defined coil-out", "a twist-out fro", "long straight bundles", "beachy waves", "a deep side part bob", "an asymmetrical bob", "a curly bob", "a tapered natural cut", "a fade with curls on top", "cornrows in a crown pattern", "Fulani braids with beads", "stitch braids", "a braided ponytail", "jumbo box braids", "butterfly locs", "soft locs", "a headwrap in ankara print", "a turban wrap", "a halo braid", "milkmaid braids", "a fishtail braid", "loose goddess curls", "a curly shag", "vintage Hollywood waves", "a beehive updo"];
+const OUTFITS = ["a flowing sapphire gown", "a sharp pearl-white power suit", "casual glam (fitted tee and jeans)", "a golden ankara print dress", "athleisure chic in chrome tones", "a blush-pink cocktail dress", "a denim jacket over a graphic tee", "an emerald evening gown", "a shimmering silver sequin gown", "a sapphire slip dress", "a pearl-white jumpsuit", "a chrome metallic blazer set", "a sapphire pantsuit with wide legs", "a white off-shoulder midi dress", "a silver pleated skirt with a satin top", "a sapphire wrap dress", "a pearl beaded cocktail dress", "a chrome trench coat over all white", "a sapphire blazer dress", "a silver fringe mini dress", "a pearl-white pantsuit", "an ice-blue ball gown", "a sapphire mermaid gown", "a silver corset top with tailored trousers", "a white lace maxi dress", "a sapphire satin skirt set", "a chrome mini skirt with an oversized blazer", "a pearl-tone knit set", "a sapphire one-shoulder gown", "a silver holographic jacket", "a white tuxedo dress", "a sapphire palazzo set", "a pearl sequin top with dark jeans", "a silver slip skirt with a graphic tee", "a sapphire denim-on-denim look", "a white sundress with gold sandals", "a kente cloth wrap dress", "a sapphire dashiki-inspired two-piece", "a chrome bomber with white leggings", "a pearl hoodie with silver joggers", "a sapphire tracksuit with hoops", "a silver puffer with a mini dress", "a white blazer with distressed jeans", "a sapphire maxi skirt with a crop top", "a pearl cardigan with a pleated skirt", "a silver cutout midi dress", "an ice-blue power dress with shoulder pads", "a sapphire kaftan", "a white feather-trim dress", "a chrome halter top with wide-leg jeans"];
+const SETTINGS = ["in a glowing photography studio", "in a golden sunflower field at sunset", "on sparkling city streets at night", "in a luxurious marble interior", "in a blooming garden", "on a beach at sunrise", "before a soft ombre backdrop", "on a grand staircase", "in a sunlit glass atrium", "on a white sand beach at golden hour", "in a field of wildflowers", "before a wall of pink roses", "on a rooftop at sunset", "in a luxury hotel lobby", "under a cherry blossom tree", "in a pearl-white ballroom", "on a yacht deck at midday", "in a golden wheat field", "before the Eiffel Tower at dusk", "on the steps of a grand museum", "in a tropical greenhouse", "under a waterfall of wisteria", "on a cobblestone street in the morning light", "in a chic Parisian café", "before a sapphire-blue ocean", "on a balcony overlooking the city", "in a lavender field at sunrise", "under string lights at an evening garden party", "in a marble courtyard with fountains", "on a red carpet premiere", "in a flower market in full bloom", "before a vintage convertible car", "on a pier over turquoise water", "in a sunlit art gallery", "under a golden archway", "in a luxurious spa retreat", "on a hilltop at sunrise", "in a butterfly conservatory", "before a cascading waterfall", "on a private jet staircase", "in a vineyard at harvest time", "under palm trees on a resort patio", "in a ballroom full of mirrors", "on a bridge at golden hour", "in a cotton field at sunset", "before a mural of angel wings", "in a greenhouse full of orchids", "under a canopy of fairy lights", "on a terrace overlooking the ocean", "in a field of sunflowers at noon"];
+
+/* ============================== STORAGE ============================== */
+const LS_C='beSeenCustomV1', LS_S='beSeenSavedV1';
+function lsGet(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+function lsSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+let CUSTOM = lsGet(LS_C, {queen:[],word:[],skin:[],age:[],body:[],hair:[],outfit:[],setting:[],type:[],vibe:[]});
+CUSTOM.queen.forEach(q=>HEROES.push({name:q.n, emoji:q.e, desc:q.d, prompt:q.p, custom:true}));
+CUSTOM.word.forEach(w=>WORDS.push(w));
+const ARRMAP = {skin:SKINS, age:AGES, body:BODIES, hair:HAIR, outfit:OUTFITS, setting:SETTINGS};
+Object.keys(ARRMAP).forEach(k=>{ (CUSTOM[k]||[]).forEach(v=>ARRMAP[k].push(v)); });
+CUSTOM.type.forEach(t=>TYPES.push({name:t.n, emoji:'✨', prompt:t.p, place:t.pl||'styled beautifully within the frame', custom:true}));
+CUSTOM.vibe.forEach(v=>VIBES.push({name:v.n, emoji:'✨', prompt:v.p, custom:true}));
+let SAVED = lsGet(LS_S, []);
+
+/* ============================== STATE (multi-select) ============================== */
+const sel = { queen:[-1], skin:[-1], age:[-1], body:[-1], hair:[-1], outfit:[-1], setting:[-1], word:[-1], type:[-1], vibe:[-1] };
+const locked = { queen:false, skin:false, age:false, body:false, hair:false, outfit:false, setting:false, word:false, type:false, vibe:false };
+const COMPAT = {
+  'Alopecia Queen':{hair:['bald and proud','a regal gold headwrap','a satin bonnet crown','a turban wrap','a headwrap in ankara print']},
+  'Plus-Size Goddess':{body:['plus-size','curvy','soft and full','full-figured','thick and beautiful','soft and curvy','voluptuous','queenly and full']},
+  'Silver Queen':{age:['in her early 60s','in her mid 60s','in her late 60s','in her early 70s','in her mid 70s','in her late 70s']},
+  'Little Person Queen':{body:BODIES.filter(b=>b!=='tall and statuesque')}
+};
+function toggleSel(cat, i){
+  const a = sel[cat];
+  if(i===-1){ sel[cat]=[-1]; return; }
+  const x = a.indexOf(i);
+  if(x > -1){ a.splice(x,1); if(!a.length) a.push(-1); }
+  else{ const n=a.indexOf(-1); if(n>-1) a.splice(n,1); a.push(i); }
+}
+function noneChip(cat){
+  return `<button type="button" class="chip none${sel[cat].indexOf(-1)>-1?' selected':''}" data-pick="${cat}:-1">None</button>`;
+}
+function noneCard(cat){
+  return `<div class="card none${sel[cat].indexOf(-1)>-1?' selected':''}" data-pick="${cat}:-1"><span class="emoji">🎲</span><span class="name">None</span><span class="desc">Surprise me</span></div>`;
+}
+
+/* ============================== HELPERS ============================== */
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+let toastT=null;
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ============================== PAGES / NAV ============================== */
+const PAGES=['pg-home','pg-queen','pg-details','pg-word','pg-type','pg-vibe','pg-results','pg-saved','pg-custom'];
+const STEPS={'pg-queen':1,'pg-details':2,'pg-word':3,'pg-type':4,'pg-vibe':5};
+function showPage(id){
+  PAGES.forEach(p=>document.getElementById(p).classList.toggle('active', p===id));
+  document.querySelectorAll('#drawer a').forEach(a=>a.classList.toggle('on', a.dataset.page===id));
+  closeDrawer();
+  window.scrollTo({top:0, behavior:'smooth'});
+  const s=STEPS[id], pr=document.getElementById('progress');
+  if(s){ pr.style.display='block'; pr.querySelector('.pfill').style.width=(s/5*100)+'%'; pr.querySelector('.ptext').textContent='Step '+s+' of 5 — tap to select, pick several if you like'; }
+  else pr.style.display='none';
+  if(id==='pg-queen') renderQueens();
+  if(id==='pg-details') renderDetails();
+  if(id==='pg-word') renderWords();
+  if(id==='pg-type') renderTypes();
+  if(id==='pg-vibe') renderVibes();
+  if(id==='pg-saved') renderSaved();
+  if(id==='pg-custom') buildCqEmojiChips();
+}
+function openDrawer(){ document.getElementById('drawer').classList.add('open'); document.getElementById('scrim').classList.add('open'); }
+function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('scrim').classList.remove('open'); }
+document.getElementById('menuBtn').onclick=openDrawer;
+document.getElementById('drawerClose').onclick=closeDrawer;
+document.getElementById('scrim').onclick=closeDrawer;
+document.querySelectorAll('#drawer a').forEach(a=>{ a.onclick=()=>showPage(a.dataset.page); });
+document.querySelectorAll('[data-goto]').forEach(b=>{ b.onclick=()=>showPage(b.dataset.goto); });
+document.getElementById('toCustom').onclick=()=>showPage('pg-custom');
+document.getElementById('yoursBtn').onclick=()=>showPage('pg-custom');
+document.getElementById('topSaved').onclick=()=>showPage('pg-saved');
+function updateSavedCount(){ document.getElementById('savedCount').textContent=SAVED.length; }
+
+/* ============================== RENDER: cards & chips ============================== */
+function cardHTML(h, i, cat){
+  const isCustom = !!h.custom;
+  return `<div class="card${sel[cat].includes(i)?' selected':''}${isCustom?' custom':''}" data-pick="${cat}:${i}">`
+    + (isCustom?`<span class="cx" data-delcustom="${cat}:${i}" title="Remove">×</span>`:'')
+    + `<span class="emoji">${h.emoji}</span><span class="name">${escapeHtml(h.name)}</span><span class="desc">${escapeHtml(h.desc||'')}</span></div>`;
+}
+function chipHTML(v, i, cat, isCustom){
+  return `<button type="button" class="chip${sel[cat].includes(i)?' selected':''}${isCustom?' custom':''}" data-pick="${cat}:${i}">`
+    + (isCustom?`<span class="cx" data-delcustom="${cat}:${i}" title="Remove">×</span>`:'')
+    + escapeHtml(v) + `</button>`;
+}
+function isCustomIdx(cat, i){
+  if(cat==='queen') return !!HEROES[i].custom;
+  if(cat==='type') return !!TYPES[i].custom;
+  if(cat==='vibe') return !!VIBES[i].custom;
+  if(cat==='word') return i >= WORDS.length - (CUSTOM.word||[]).length && (CUSTOM.word||[]).length>0;
+  const base={skin:50,age:18,body:15,hair:50,outfit:50,setting:50}[cat];
+  return i >= base;
+}
+function renderQueens(){
+  const g=document.getElementById('heroGrid'); g.innerHTML=noneCard('queen');
+  HEROES.forEach((h,i)=>{ g.insertAdjacentHTML('beforeend', cardHTML(h,i,'queen')); });
+}
+function renderChips(id, arr, cat){
+  const w=document.getElementById(id); w.innerHTML=noneChip(cat);
+  arr.forEach((v,i)=>{ w.insertAdjacentHTML('beforeend', chipHTML(v,i,cat,isCustomIdx(cat,i))); });
+}
+function renderDetails(){
+  renderChips('skinChips',SKINS,'skin'); renderChips('ageChips',AGES,'age'); renderChips('bodyChips',BODIES,'body');
+  renderChips('hairChips',HAIR,'hair'); renderChips('outfitChips',OUTFITS,'outfit'); renderChips('settingChips',SETTINGS,'setting');
+}
+function renderWords(){ renderChips('wordChips',WORDS,'word'); }
+function renderTypes(){
+  const g=document.getElementById('typeGrid'); g.innerHTML=noneCard('type');
+  TYPES.forEach((t,i)=>{ g.insertAdjacentHTML('beforeend', cardHTML({emoji:t.emoji,name:t.name,desc:'',custom:t.custom},i,'type')); });
+}
+function renderVibes(){
+  const g=document.getElementById('vibeGrid'); g.innerHTML=noneCard('vibe');
+  VIBES.forEach((v,i)=>{ g.insertAdjacentHTML('beforeend', cardHTML({emoji:v.emoji,name:v.name,desc:'',custom:v.custom},i,'vibe')); });
+}
+document.addEventListener('click', e=>{
+  const lk=e.target.closest('[data-lock]');
+  if(lk){
+    const cat=lk.dataset.lock; locked[cat]=!locked[cat];
+    lk.textContent=locked[cat]?'🔒':'🔓'; lk.classList.toggle('on',locked[cat]);
+    toast(locked[cat]?'Locked 🔒 — Surprise Me will keep it':'Unlocked 🔓');
+    return;
+  }
+  const del=e.target.closest('[data-delcustom]');
+  if(del){
+    e.stopPropagation();
+    const [cat,idx]=del.dataset.delcustom.split(':'); removeCustom(cat, parseInt(idx,10));
+    return;
+  }
+  const p=e.target.closest('[data-pick]');
+  if(p){
+    const [cat,idx]=p.dataset.pick.split(':'); const i=parseInt(idx,10);
+    toggleSel(cat,i);
+    const pg=p.closest('.page').id; showPageRefresh(pg);
+  }
+  const add=e.target.closest('[data-add]');
+  if(add){ addCustom(add.dataset.add); }
+});
+function showPageRefresh(pg){
+  if(pg==='pg-queen') renderQueens();
+  else if(pg==='pg-details') renderDetails();
+  else if(pg==='pg-word') renderWords();
+  else if(pg==='pg-type') renderTypes();
+  else if(pg==='pg-vibe') renderVibes();
+}
+
+/* ============================== CUSTOM ADDS (auto-save) ============================== */
+function addCustom(cat){
+  if(cat==='type'){
+    const d=document.getElementById('add-type-desc').value.trim();
+    const pl=document.getElementById('add-type-place').value.trim() || 'styled beautifully within the frame';
+    if(!d){ toast('Describe the style first 💛'); return; }
+    if(TYPES.some(t=>t.name.toLowerCase()===d.toLowerCase())){ toast('That style is already here ✨'); return; }
+    const entry={n:d, p:d, pl:pl};
+    CUSTOM.type.push(entry); lsSet(LS_C, CUSTOM);
+    TYPES.push({name:d, emoji:'✨', prompt:d, place:pl, custom:true});
+    document.getElementById('add-type-desc').value=''; document.getElementById('add-type-place').value='';
+    renderTypes(); toast('Saved ✓ — it\'ll be here next time');
+    return;
+  }
+  if(cat==='vibe'){
+    const d=document.getElementById('add-vibe').value.trim();
+    if(!d){ toast('Describe the vibe first 💛'); return; }
+    if(VIBES.some(v=>v.name.toLowerCase()===d.toLowerCase())){ toast('That vibe is already here ✨'); return; }
+    CUSTOM.vibe.push({n:d, p:d}); lsSet(LS_C, CUSTOM);
+    VIBES.push({name:d, emoji:'✨', prompt:d, custom:true});
+    document.getElementById('add-vibe').value='';
+    renderVibes(); toast('Saved ✓ — it\'ll be here next time');
+    return;
+  }
+  if(cat==='word'){
+    const inp=document.getElementById('customWord');
+    const v=inp.value.trim();
+    if(!v){ toast('Type a word first 💛'); return; }
+    const up=v.toUpperCase();
+    if(WORDS.includes(up)){ toast('That word is already here ✨'); return; }
+    CUSTOM.word.push(up); lsSet(LS_C, CUSTOM); WORDS.push(up);
+    inp.value=''; renderWords(); toast('Saved ✓ — it\'ll be here next time');
+    return;
+  }
+  const inp=document.getElementById('add-'+cat);
+  const v=inp.value.trim();
+  if(!v){ toast('Type something first 💛'); return; }
+  const arr=ARRMAP[cat];
+  if(arr.some(x=>x.toLowerCase()===v.toLowerCase())){ toast('That\'s already an option ✨'); return; }
+  CUSTOM[cat].push(v); lsSet(LS_C, CUSTOM); arr.push(v);
+  sel[cat].push(arr.length-1);
+  inp.value=''; renderDetails(); toast('Saved ✓ — it\'ll be here next time');
+}
+function removeCustom(cat, idx){
+  if(cat==='queen'){
+    const q=HEROES[idx]; if(!q||!q.custom) return;
+    CUSTOM.queen=CUSTOM.queen.filter(x=>x.n!==q.name); lsSet(LS_C, CUSTOM);
+    HEROES.splice(idx,1); sel.queen=sel.queen.filter(i=>i!==idx).map(i=>i>idx?i-1:i);
+    if(!sel.queen.length) sel.queen=[0];
+    renderQueens(); toast('Removed');
+    return;
+  }
+  if(cat==='type'){
+    const t=TYPES[idx]; if(!t||!t.custom) return;
+    CUSTOM.type=CUSTOM.type.filter(x=>x.n!==t.name); lsSet(LS_C, CUSTOM);
+    TYPES.splice(idx,1); sel.type=sel.type.filter(i=>i!==idx).map(i=>i>idx?i-1:i);
+    if(!sel.type.length) sel.type=[0];
+    renderTypes(); toast('Removed'); return;
+  }
+  if(cat==='vibe'){
+    const v=VIBES[idx]; if(!v||!v.custom) return;
+    CUSTOM.vibe=CUSTOM.vibe.filter(x=>x.n!==v.name); lsSet(LS_C, CUSTOM);
+    VIBES.splice(idx,1); sel.vibe=sel.vibe.filter(i=>i!==idx).map(i=>i>idx?i-1:i);
+    if(!sel.vibe.length) sel.vibe=[0];
+    renderVibes(); toast('Removed'); return;
+  }
+  if(cat==='word'){
+    const w=WORDS[idx];
+    CUSTOM.word=CUSTOM.word.filter(x=>x!==w); lsSet(LS_C, CUSTOM);
+    WORDS.splice(idx,1); sel.word=sel.word.filter(i=>i!==idx).map(i=>i>idx?i-1:i);
+    if(!sel.word.length) sel.word=[0];
+    renderWords(); toast('Removed'); return;
+  }
+  const arr=ARRMAP[cat], v=arr[idx];
+  CUSTOM[cat]=CUSTOM[cat].filter(x=>x!==v); lsSet(LS_C, CUSTOM);
+  arr.splice(idx,1); sel[cat]=sel[cat].filter(i=>i!==idx).map(i=>i>idx?i-1:i);
+  if(!sel[cat].length) sel[cat]=[0];
+  renderDetails(); toast('Removed');
+}
+
+/* ============================== MAKE IT YOURS (queen) ============================== */
+const CQ_EMOJI = ["👑","🕊️","🔥","💎","🌟","🌸","🦋","💃","🌈","✨","💪","🤟","🎀","🪞","🌺","⚡"];
+let cqEmoji = 0;
+const PITY = [/\bsuffer(ing|er|s)?\b/i, /\bpoor\b/i, /\bsad\b/i, /\bweep(y|ing)?\b/i,
+  /\bsorrow(ful)?\b/i, /\bpit(y|iful|iable)\b/i, /\btragic\b/i, /\bmiserable\b/i,
+  /\bunfortunate\b/i, /\bvictim\b/i, /\bafflicted\b/i, /\bhelpless\b/i,
+  /\bhopeless\b/i, /\bbroken\b/i, /\bdamaged\b/i, /\bsickly\b/i];
+function buildCqEmojiChips(){
+  const w=document.getElementById('cqEmojiChips'); w.innerHTML='';
+  CQ_EMOJI.forEach((e,i)=>{
+    const c=el('button','chip'+(i===cqEmoji?' selected':''), e);
+    c.type='button'; c.style.fontSize='1.4rem'; c.style.padding='8px 14px';
+    c.onclick=()=>{ cqEmoji=i; buildCqEmojiChips(); };
+    w.appendChild(c);
+  });
+}
+function findPityWord(text){
+  for(const re of PITY){ const m=text.match(re); if(m) return m[0]; }
+  return null;
+}
+document.getElementById('cqAdd').onclick=function(){
+  const name=document.getElementById('cqName').value.trim();
+  const desc=document.getElementById('cqDesc').value.trim();
+  const warn=document.getElementById('cqWarn'), win=document.getElementById('cqWin');
+  warn.style.display='none'; win.style.display='none';
+  if(!name || !desc){
+    warn.innerHTML='💛 Almost! Give her <b>a proud name</b> and <b>a dignity-first description</b> — then tap the button again.';
+    warn.style.display='block'; return;
+  }
+  const pity=findPityWord(desc);
+  if(pity){
+    warn.innerHTML='Hmm — "<b>'+escapeHtml(pity)+'</b>" leans toward pity, and every queen here celebrates strength, never sorrow. Swap it for a word about her radiance or power, then try again. 💛';
+    warn.style.display='block'; return;
+  }
+  if(HEROES.some(h=>h.name.toLowerCase()===name.toLowerCase())){
+    warn.innerHTML='<b>'+escapeHtml(name)+'</b> is already one of your queens — pick her in Step 1 and let\'s build! 👑';
+    warn.style.display='block'; return;
+  }
+  const short=desc.length>64 ? desc.slice(0,64).trim()+'…' : desc;
+  const q={n:name, e:CQ_EMOJI[cqEmoji], d:'Your custom queen · '+short, p:desc};
+  CUSTOM.queen.push(q); lsSet(LS_C, CUSTOM);
+  HEROES.push({name:name, emoji:CQ_EMOJI[cqEmoji], desc:'Your custom queen · '+short, prompt:desc, custom:true});
+  sel.queen=[HEROES.length-1];
+  win.innerHTML='🎉 <b>'+escapeHtml(name)+'</b> is in and saved! She\'s in Step 1, already selected.<br><button class="btn btn-primary" id="cqGo" type="button">✨ Generate With Her Now</button>';
+  win.style.display='block';
+  document.getElementById('cqGo').onclick=()=>showPage('pg-vibe');
+  document.getElementById('cqName').value=''; document.getElementById('cqDesc').value='';
+};
+
+/* ============================== PROMPT ENGINE ============================== */
+function powerWord(){
+  const custom=document.getElementById('customWord').value.trim();
+  return custom ? custom.toUpperCase() : null;
+}
+function pick(a, i){ return a[i % a.length]; }
+function buildPrompt(qi,si,ai,bi,hi,oi,sei,wi,ti,vi,word){
+  const h=HEROES[qi], t=TYPES[ti], v=VIBES[vi];
+  return `Ultra-detailed ${v.prompt} portrait of ${h.prompt}, a woman ${AGES[ai]} with ${SKINS[si]} skin and a ${BODIES[bi]} figure, ${HAIR[hi]}, wearing ${OUTFITS[oi]}, ${SETTINGS[sei]}. The word "${word}" appears as ${t.prompt}, ${t.place}. Empowering, dignified and celebratory mood — strength and beauty, never pity. Radiant lighting, ultra detailed, 8k, professional photography, masterpiece. Render as ONE single portrait on its own separate canvas — never a collage, never multiple panels in one image.`;
+}
+function effIdx(cat, arr, i){
+  const s=sel[cat];
+  if(s.indexOf(-1)>-1) return Math.floor(Math.random()*arr.length);
+  return s[i % s.length];
+}
+function resolveCompat(qi, cat, idx){
+  const rule=COMPAT[HEROES[qi].name];
+  if(!rule || !rule[cat]) return idx;
+  const arr = cat==='hair'?HAIR : cat==='body'?BODIES : AGES;
+  if(rule[cat].indexOf(arr[idx])>-1) return idx;
+  const allowed=rule[cat].map(v=>arr.indexOf(v)).filter(x=>x>-1);
+  return allowed[Math.floor(Math.random()*allowed.length)];
+}
+function generate(){
+  const n=parseInt(document.getElementById('countRange').value,10);
+  const customW=powerWord();
+  const list=document.getElementById('promptList'); list.innerHTML='';
+  for(let i=0;i<n;i++){
+    const qi=effIdx('queen',HEROES,i);
+    const si=effIdx('skin',SKINS,i);
+    let ai=effIdx('age',AGES,i), bi=effIdx('body',BODIES,i), hi=effIdx('hair',HAIR,i);
+    ai=resolveCompat(qi,'age',ai); bi=resolveCompat(qi,'body',bi); hi=resolveCompat(qi,'hair',hi);
+    const oi=effIdx('outfit',OUTFITS,i), sei=effIdx('setting',SETTINGS,i),
+          wi=effIdx('word',WORDS,i), ti=effIdx('type',TYPES,i), vi=effIdx('vibe',VIBES,i);
+    const word=customW || WORDS[wi];
+    const txt=buildPrompt(qi,si,ai,bi,hi,oi,sei,wi,ti,vi,word);
+    const card=el('div','prompt-card');
+    const head=el('div','phead',`<span class="pnum">Prompt ${i+1} · ${escapeHtml(HEROES[qi].name)} · ${escapeHtml(TYPES[ti].name)}</span>`);
+    const btnRow=el('div','', '');
+    btnRow.style.display='flex'; btnRow.style.gap='8px';
+    const btn=el('button','mini-btn','📋 Copy');
+    btn.onclick=()=>{ navigator.clipboard.writeText(txt).then(()=>{ btn.textContent='✓ Copied!'; setTimeout(()=>btn.textContent='📋 Copy',1600); }); };
+    const save=isSaved(txt)?el('button','save-btn saved','♥ Saved'):el('button','save-btn','♡ Save');
+    save.onclick=()=>{ toggleSaved(txt); save.className=isSaved(txt)?'save-btn saved':'save-btn'; save.textContent=isSaved(txt)?'♥ Saved':'♡ Save'; };
+    btnRow.appendChild(btn); btnRow.appendChild(save);
+    head.appendChild(btnRow);
+    card.appendChild(head);
+    card.appendChild(el('p','ptxt',escapeHtml(txt)));
+    list.appendChild(card);
+  }
+  document.getElementById('copyAllBtn').style.display='inline-block';
+  showPage('pg-results');
+}
+function surprise(){
+  const rnd=a=>Math.floor(Math.random()*a.length);
+  if(!locked.queen) sel.queen=[rnd(HEROES)];
+  if(!locked.skin) sel.skin=[rnd(SKINS)];
+  if(!locked.age) sel.age=[rnd(AGES)];
+  if(!locked.body) sel.body=[rnd(BODIES)];
+  if(!locked.hair) sel.hair=[rnd(HAIR)];
+  if(!locked.outfit) sel.outfit=[rnd(OUTFITS)];
+  if(!locked.setting) sel.setting=[rnd(SETTINGS)];
+  if(!locked.word) sel.word=[rnd(WORDS)];
+  if(!locked.type) sel.type=[rnd(TYPES)];
+  if(!locked.vibe) sel.vibe=[rnd(VIBES)];
+  document.getElementById('customWord').value='';
+  generate();
+}
+document.getElementById('fabSurprise').onclick=()=>{ surprise(); };
+document.getElementById('fabCopy').onclick=()=>{
+  let texts=[...document.querySelectorAll('#promptList .ptxt')].map(p=>p.textContent);
+  if(!texts.length){ surprise(); texts=[...document.querySelectorAll('#promptList .ptxt')].map(p=>p.textContent); }
+  if(texts.length) navigator.clipboard.writeText('Create each image below on its own SEPARATE canvas \u2014 never a collage, never combine them into one image.\n\n' + texts.map((t,i)=>'CREATE IMAGE '+(i+1)+':\n'+t).join('\n\n---\n\n')).then(()=>toast('Copied ✓'));
+};
+document.getElementById('genBtn').onclick=generate;
+document.getElementById('surpriseBtn').onclick=surprise;
+document.getElementById('copyAllBtn').onclick=function(){
+  const texts=[...document.querySelectorAll('#promptList .ptxt')].map(p=>p.textContent);
+  navigator.clipboard.writeText('Create each image below on its own SEPARATE canvas \u2014 never a collage, never combine them into one image.\n\n' + texts.map((t,i)=>'CREATE IMAGE '+(i+1)+':\n'+t).join('\n\n---\n\n')).then(()=>{ toast('All copied ✓'); });
+};
+document.getElementById('countRange').oninput=function(){ document.getElementById('countNum').textContent=this.value; };
+
+/* ============================== SAVED ============================== */
+function isSaved(t){ return SAVED.some(s=>s.t===t); }
+function toggleSaved(t){
+  const i=SAVED.findIndex(s=>s.t===t);
+  if(i>-1){ SAVED.splice(i,1); toast('Removed from saved'); }
+  else{ SAVED.unshift({t:t, d:new Date().toLocaleDateString()}); toast('Saved ♥'); }
+  lsSet(LS_S, SAVED); updateSavedCount();
+}
+function renderSaved(){
+  const w=document.getElementById('savedList'); w.innerHTML='';
+  updateSavedCount();
+  if(!SAVED.length){
+    w.innerHTML='<div class="empty-saved">Nothing saved yet.<br>Generate some prompts and tap <b>♡ Save</b> on your favorites — they\'ll live here.</div>';
+    return;
+  }
+  SAVED.forEach((s,idx)=>{
+    const card=el('div','prompt-card');
+    const head=el('div','phead',`<span class="pnum">Saved · ${escapeHtml(s.d)}</span>`);
+    const row=el('div',''); row.style.display='flex'; row.style.gap='8px';
+    const cp=el('button','mini-btn','📋 Copy');
+    cp.onclick=()=>{ navigator.clipboard.writeText(s.t).then(()=>{ cp.textContent='✓ Copied!'; setTimeout(()=>cp.textContent='📋 Copy',1600); }); };
+    const rm=el('button','save-btn','✕ Remove');
+    rm.onclick=()=>{ SAVED.splice(idx,1); lsSet(LS_S,SAVED); renderSaved(); };
+    row.appendChild(cp); row.appendChild(rm); head.appendChild(row);
+    card.appendChild(head); card.appendChild(el('p','ptxt',escapeHtml(s.t)));
+    w.appendChild(card);
+  });
+}
+
+
+function openHelp(){ document.getElementById('helpModal').classList.add('open'); document.getElementById('helpScrim').classList.add('open'); }
+function closeHelp(){ document.getElementById('helpModal').classList.remove('open'); document.getElementById('helpScrim').classList.remove('open'); }
+document.getElementById('helpFab').onclick=openHelp;
+document.getElementById('helpClose').onclick=closeHelp;
+document.getElementById('helpScrim').onclick=closeHelp;
+
+/* ============================== INIT ============================== */
+document.getElementById('copyAllBtn').style.display='none';
+renderQueens(); updateSavedCount(); buildCqEmojiChips();
+
+</script>
+</body>
+</html>
